@@ -3,7 +3,6 @@ const router = express();
 const auth = require("./auth");
 const session = require("express-session");
 const Controller = require("./controller");
-const postSchema = require("./schemas/post");
 router.use(
   session({
     secret: "WPIYAxQusr05X",
@@ -25,4 +24,6 @@ router.get("/admin", auth.isLogin, (req, res) => {
 // Post requests
 router.post("/login", auth.login);
 router.post("/post", auth.isLogin, Controller.post);
+// Delete requests
+router.delete("/post/:id", Controller.deletePost);
 module.exports = router;

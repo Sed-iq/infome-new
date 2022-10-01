@@ -1,0 +1,116 @@
+// For PC
+// Set all background-images from the html file
+@media (min-width: 640px) {
+  #top_news {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 400px;
+    overflow: hidden;
+  }
+  #first {
+    // padding: 2em;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    #one,
+    #two {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    #one {
+      background: url(./1156488.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    #two {
+      background: url(./tst.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    #below {
+      background-color: rgba(0, 0, 0, 0.725);
+      padding: 1em;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      font-size: 13px;
+    }
+  }
+  #second {
+    background: url(./test.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 60%;
+    #below {
+      padding: 1em;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      letter-spacing: 0.5px;
+      background-color: rgba(0, 0, 0, 0.725);
+    }
+  }
+  #other_news {
+    #below {
+      background: rgba(0, 0, 0, 0.485);
+      padding: 1em 2em;
+    }
+  }
+  #last_section {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    #last_holder {
+      width: 80%;
+      background: url(./1156488.png);
+      background-size: cover;
+      background-position-y: center;
+      color: white;
+      #cover {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 3em 0em;
+      }
+    }
+    #title_section {
+      letter-spacing: 1.044px;
+      margin: 1em 0em;
+    }
+  }
+}
+#indicator {
+  width: 150px;
+  margin: 2em 1em;
+  background-color: rgb(26, 23, 17);
+  padding: 0.4em;
+  font: bold;
+}
+// Phone
+@media (max-width: 640px) {
+  #other_news {
+    // height: ;
+  }
+}
+#other_news {
+  height: 300px;
+  #one {
+    background: url("./test.jpg") no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+  #two {
+    background: url("./1156488.png") no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+  #three {
+    background: url("./test.jpg") no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+}

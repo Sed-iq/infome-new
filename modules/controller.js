@@ -35,5 +35,26 @@ const Controller = {
         res.redirect("/");
       });
   },
+  deletePost: (req, res) => {
+    let { id } = req.params;
+    postSchema.deleteOne({ _id: id }, (err, s) => {
+      if (err) {
+        console.log(err);
+        res.status(404).json({ message: err });
+      } else {
+        console.log(s);
+        res.status(200).end();
+      }
+    });
+  },
+  logout: (req, res) => {
+    let { session } = req;
+    session.destroy((err) => {
+      if (err) {
+        console.log(err);
+        res.status(404).json({ message: err });
+      } else res.status(200).end();
+    });
+  },
 };
 module.exports = Controller;

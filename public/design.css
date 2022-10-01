@@ -1,0 +1,103 @@
+@media (min-width: 640px) {
+  #top_news {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 400px;
+    overflow: hidden;
+  }
+  #first {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+  }
+  #first #one,
+#first #two {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  #first #one {
+    background: url(./1156488.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  #first #two {
+    background: url(./tst.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  #first #below {
+    background-color: rgba(0, 0, 0, 0.725);
+    padding: 1em;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    font-size: 13px;
+  }
+  #second {
+    background: url(./test.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 60%;
+  }
+  #second #below {
+    padding: 1em;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5px;
+    background-color: rgba(0, 0, 0, 0.725);
+  }
+  #other_news #below {
+    background: rgba(0, 0, 0, 0.485);
+    padding: 1em 2em;
+  }
+  #last_section {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+  #last_section #last_holder {
+    width: 80%;
+    background: url(./1156488.png);
+    background-size: cover;
+    background-position-y: center;
+    color: white;
+  }
+  #last_section #last_holder #cover {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 3em 0em;
+  }
+  #last_section #title_section {
+    letter-spacing: 1.044px;
+    margin: 1em 0em;
+  }
+}
+#indicator {
+  width: 150px;
+  margin: 2em 1em;
+  background-color: rgb(26, 23, 17);
+  padding: 0.4em;
+  font: bold;
+}
+
+#other_news {
+  height: 300px;
+}
+#other_news #one {
+  background: url("./test.jpg") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+#other_news #two {
+  background: url("./1156488.png") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+#other_news #three {
+  background: url("./test.jpg") no-repeat;
+  background-size: cover;
+  height: 100%;
+}/*# sourceMappingURL=design.css.map */

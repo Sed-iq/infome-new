@@ -21,5 +21,5 @@ const pObj = {
     required: true,
   },
 };
-const schema = mongoose.Schema(pObj);
+const schema = mongoose.Schema(pObj, { timeStamps: true });
 module.exports = mongoose.model("post", schema);

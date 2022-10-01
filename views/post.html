@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techinf || A post</title>
+    <link rel="stylesheet" href="./../public/post.css" />
+    <link rel="stylesheet" href="./../public/post_design.css" />
+  </head>
+  <body>
+    <!-- Heading (Replace with an ejs import) -->
+    <div id="header" class="bg-white p-3 sticky top-0">
+      <a
+        href="
+        /"
+      >
+        <h2 class="font-bold mx-5">
+          <span class="px-2 py-3 mr-1 rounded font-bold bg-black text-white"
+            >T</span
+          >echInf
+        </h2>
+      </a>
+    </div>
+
+    <div id="body" class="sm:mt-14 sm:flex sm:flex-col sm:items-center">
+      <div id="title" class="font-bold flex flex-row justify-center sm:text-xl">
+        <h2>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam volu
+        </h2>
+      </div>
+      <div id="snippet" class="sm:text-sm flex flex-row justify-center">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+          aliquid inventore ipsa eius est reiciendis laboriosam porro
+          dignissimos! Quod dolores amet fugit possimus obcaecati iste eveniet
+          iure consequuntur ducimus eaque.
+        </p>
+      </div>
+      <div id="info" class="sm:text-xs pt-6 flex flex-row justify-around">
+        <p class="">Written by Abdullahi Sediq |&nbsp;</p>
+        <p>2/2/1832</p>
+      </div>
+      <!-- Image -->
+      <div id="image_holder" class="flex flex-row justify-center my-8">
+        <img src="./../public/tst.png" alt="" class="sm:max-w-4xl max-w-lg" />
+      </div>
+      <div id="main" class="px-4 sm:max-w-6xl my-10">
+        <h2>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+          quos molesautem praesentium sequi esse ex error laborum? Hic unde
+          animi repellat consequatur mollitia commodi reprehenderit tempore
+          ipsam incidunt veritatis, rerum fugiat earum aut dolorum iusto a
+          temporibus quisquam aperiam dolore explicabo adipisci. Repellat
+          tenetur commodi earum aperiam sapiente quos sed, rerum modi recusandae
+          impedit nostrum quia dolorum. Itaque beatae consectete amet odit
+          voluptatibus repellendus explicabo provident est molestiae maiores?
+          Ipsam ipsum debitis quidem fugiat, eum reiciendis ab rerum incidunt
+          accusamus explicabo, maiores libero voluptates. Consequatur!
+        </h2>
+      </div>
+      <!-- comment section -->
+      <div id="comments" class="sm:my-10 mb-5">
+        <div id="btn_holder">
+          <button class="px-4 py-2 rounded bg-blue-700 text-white">
+            Show comments
+          </button>
+          <button class="px-4 py-2 rounded bg-black text-white">
+            Post a comment
+          </button>
+        </div>
+      </div>
+
+      <!-- Shows comment inputs -->
+      <div id="post_comment" class="flex flex-col sm:w-2/5 mb-7">
+        <div>
+          <input
+            type="text"
+            placeholder="Your name (optional)"
+            class="w-full text-sm px-2 outline-none focus:border-slate-900 py-2 border-2 rounded-sm border-gray-500"
+          />
+        </div>
+        <div>
+          <textarea
+            style="resize: none"
+            type="text"
+            placeholder="Your comment"
+            class="w-full text-sm px-2 mt-5 outline-none focus:border-slate-900 py-3 border-2 rounded-sm border-gray-500"
+          ></textarea>
+        </div>
+        <div class="flex mt-4 flex-row justify-center">
+          <button id="post" class="p-3 px-7 rounded text-white bg-blue-500">
+            Post
+          </button>
+        </div>
+      </div>
+      <!-- Shows other people's comments -->
+      <div id="comments">
+        <p class="">Comments</p>
+      </div>
+
+      <div id="footer" class="w-full bg-black p-4 text-white text-center">
+        <h2 class="font-mono text-sm font-bold">
+          Copyright&copy; Techinf 2022
+        </h2>
+      </div>
+    </div>
+  </body>
+</html>
