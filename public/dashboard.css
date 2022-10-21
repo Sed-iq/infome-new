@@ -1,0 +1,32 @@
+@media (min-width: 640px) {
+  #indicator {
+    width: 100px;
+  }
+  #dashboard {
+    width: 80%;
+    padding: 1em;
+  }
+  #inputs {
+    width: 80%;
+  }
+  #p {
+    font-size: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  #title {
+    width: 100%;
+    height: 50px;
+  }
+  #all_posts {
+    display: none;
+  }
+  #img_h {
+    margin-top: 5px;
+  }
+  #img_h img {
+    width: 28px;
+  }
+  #create_post {
+    width: 600px;
+  }
+}/*# sourceMappingURL=dashboard.css.map */

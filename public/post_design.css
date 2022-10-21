@@ -18,6 +18,7 @@ img {
     max-width: 60%;
   }
 }
-#post_comment {
+#post_comment,
+#comments_holder {
   display: none;
 }/*# sourceMappingURL=post_design.css.map */

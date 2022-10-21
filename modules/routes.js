@@ -23,7 +23,12 @@ router.get("/admin", auth.isLogin, (req, res) => {
 });
 // Post requests
 router.post("/login", auth.login);
-router.post("/post", auth.isLogin, Controller.post);
+router.post(
+  "/post",
+  auth.isLogin,
+  Controller.imageUpload.single("image"),
+  Controller.post
+);
 // Delete requests
 router.delete("/post/:id", Controller.deletePost);
 module.exports = router;

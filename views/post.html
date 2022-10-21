@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./../public/post_design.css" />
   </head>
   <body>
-    <!-- Heading (Replace with an ejs import) -->
+    <!-- Heading (Replace with an ejs partial during merging) -->
     <div id="header" class="bg-white p-3 sticky top-0">
       <a
         href="
@@ -62,10 +62,16 @@
       <!-- comment section -->
       <div id="comments" class="sm:my-10 mb-5">
         <div id="btn_holder">
-          <button class="px-4 py-2 rounded bg-blue-700 text-white">
+          <button
+            id="show_comm_btn"
+            class="px-4 py-2 rounded bg-blue-700 text-white"
+          >
             Show comments
           </button>
-          <button class="px-4 py-2 rounded bg-black text-white">
+          <button
+            id="post_comm_btn"
+            class="px-4 py-2 rounded bg-black text-white"
+          >
             Post a comment
           </button>
         </div>
@@ -95,8 +101,19 @@
         </div>
       </div>
       <!-- Shows other people's comments -->
-      <div id="comments">
-        <p class="">Comments</p>
+      <div id="comments_holder" class="sm:w-2/5 my-7">
+        <p class="px-8 pb-4">Comments</p>
+        <div id="comments" class="border-2 rounded border-gray-400 px-3">
+          <div id="hold">
+            <p id="name" class="py-4 italic">Sediq</p>
+            <div class="flex flex-row justify-between">
+              <p id="comment" class="pl-7 text-sm">
+                This has been enlightening
+              </p>
+              <p id="date" class="text-gray-600 text-xs">20/2/1991</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div id="footer" class="w-full bg-black p-4 text-white text-center">
@@ -106,4 +123,27 @@
       </div>
     </div>
   </body>
+  <script src="./../public/jquery.js"></script>
+  <script>
+    let post_comment_btn = document.querySelector("#post_comm_btn");
+    let post_comment_show = document.querySelector("#post_comment");
+    let show_comm_btn = document.querySelector("#show_comm_btn");
+    let comments_holder = document.querySelector("#comments_holder");
+    post_comment_btn.addEventListener("click", () => {
+      if (window.getComputedStyle(comments_holder).display == "none")
+        $(post_comment_show).slideToggle(200);
+      else {
+        $(comments_holder).slideToggle(200);
+        $(post_comment_show).slideToggle(200);
+      }
+    });
+    show_comm_btn.addEventListener("click", () => {
+      if (window.getComputedStyle(post_comment_show).display == "none")
+        $(comments_holder).slideToggle(200);
+      else {
+        $(comments_holder).slideToggle(200);
+        $(post_comment_show).slideToggle(200);
+      }
+    });
+  </script>
 </html>

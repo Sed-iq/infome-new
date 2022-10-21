@@ -1,5 +1,19 @@
-const postSchema = require("./schemas/post");
+const postSchema = require("./schemas/post"),
+  multer = require("multer");
 const Controller = {
+  imageUpload: (req, res) => {
+    const storage = multer.diskStorage({
+      filename: (req, cb, file) => {
+        console.log(file);
+      },
+      destination: (req, cb, file) => {
+        console.log(file);
+      },
+    });
+    multer({
+      storage: storage,
+    });
+  },
   post: (req, res) => {
     let { title, snippet, image, author, body } = req.body;
     let newPost = new postSchema({
