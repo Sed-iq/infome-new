@@ -12,7 +12,7 @@ const pObj = {
     type: String,
     required: true,
   },
-  author: {
+  keywords: {
     type: String,
     required: true,
   },
@@ -20,6 +20,10 @@ const pObj = {
     type: String,
     required: true,
   },
+  time: {
+    type: Date,
+    required: true,
+  },
 };
-const schema = mongoose.Schema(pObj, { timeStamps: true });
+const schema = mongoose.Schema(pObj);
 module.exports = mongoose.model("post", schema);

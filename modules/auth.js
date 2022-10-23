@@ -13,6 +13,7 @@ const Auth = {
                 (req.session.login = true), (req.user = d);
                 res.redirect("/admin");
               } else {
+                console.log("ub");
                 res.redirect("/login");
               }
             });

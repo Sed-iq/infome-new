@@ -10,16 +10,16 @@ router.use(
     resave: false,
   })
 );
+router.use("/public", express.static("public"));
 router.use(express.urlencoded({ extended: true }));
-router.get("/", (req, res) => {
-  res.send("home page");
-});
-router.get("/login", (req, res) => {
-  res.send("Login page");
+router.set("view engine", "ejs");
+router.get("/", Controller.homepage);
+router.get("/login", auth.isLogin, (req, res) => {
+  res.render("login");
 });
 router.get("/post/:id", Controller.showPost); // Getting one post
 router.get("/admin", auth.isLogin, (req, res) => {
-  res.send("Admin");
+  res.render("dashboard");
 });
 // Post requests
 router.post("/login", auth.login);
