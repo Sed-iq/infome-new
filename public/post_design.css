@@ -1,3 +1,7 @@
+body {
+  word-wrap: break-word;
+}
+
 img {
   pointer-events: none;
 }
@@ -16,6 +20,11 @@ img {
 @media (min-width: 640px) {
   #image_holder img {
     max-width: 60%;
+  }
+}
+@media (max-width: 640px) {
+  #image_holder img {
+    max-width: 90%;
   }
 }
 #post_comment,

@@ -27,7 +27,6 @@ const Controller = {
           second,
           data,
         });
-        console.log(second);
       })
       .catch((e) => console.log(e));
   },
@@ -53,32 +52,33 @@ const Controller = {
       });
   },
   showPost: (req, res) => {
-    res.render("post");
-    // let { id } = req.params;
-    // postSchema
-    //   .findById(id)
-    //   .then((d) => {
-    //     if (d) {
-    //     } else {
-    //       res.redirect("/");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     res.redirect("/");
-    //   });
+    let { id } = req.params;
+    postSchema
+      .findById(id)
+      .then((d) => {
+        if (d) {
+          res.render("post", { data: d });
+        } else {
+          res.redirect("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.redirect("/");
+      });
   },
   deletePost: (req, res) => {
     let { id } = req.params;
-    postSchema.deleteOne({ _id: id }, (err, s) => {
-      if (err) {
-        console.log(err);
-        res.status(404).json({ message: err });
-      } else {
-        console.log(s);
-        res.status(200).end();
-      }
-    });
+    postSchema
+      .findByIdAndDelete(id)
+      .then((data) => {
+        if (data) res.status(200).end();
+        else res.status(404).end();
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(404).end();
+      });
   },
   logout: (req, res) => {
     let { session } = req;
@@ -88,6 +88,58 @@ const Controller = {
         res.status(404).json({ message: err });
       } else res.status(200).end();
     });
+  },
+  comment_upload: (req, res) => {
+    if (req.body) {
+      let { name, comment } = req.body;
+      if (name == "" || name == null) {
+        let Comment = {
+          name: "Anonymous",
+          comment,
+          time: new Date(),
+        };
+        postSchema
+          .updateOne({ _id: req.params.id }, { $push: { comment: Comment } })
+          .then((d) => {
+            if (d.acknowledged == true) res.redirect(`/post/${req.params.id}`);
+            else res.statusd(404).redirect(`Error`);
+          })
+          .catch((e) => {
+            console.log(e);
+            res.redirect(`/post/${req.params.id}`);
+          });
+      } else {
+        let Comment = {
+          name,
+          comment,
+          time: new Date(),
+        };
+        postSchema
+          .updateOne({ _id: req.params.id }, { $push: { comment: Comment } })
+          .then((d) => {
+            if (d.acknowledged == true) res.redirect(`/post/${req.params.id}`);
+            else res.statusd(404).redirect(`Error`);
+          })
+          .catch((e) => {
+            console.log(e);
+            res.redirect(`/post/${req.params.id}`);
+          });
+      }
+    }
+  },
+  dashboard: (req, res) => {
+    postSchema
+      .find()
+      .sort({ time: "descending" })
+      .then((data) => {
+        res.render("dashboard", {
+          data,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.redirect("/");
+      });
   },
 };
 module.exports = Controller;

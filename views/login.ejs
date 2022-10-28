@@ -12,7 +12,10 @@
     <div id="body">
       <div id="login_body">
         <!-- Logo -->
-        <div id="header" class="w-full mb-5">
+        <div
+          id="header"
+          class="w-full sm:mt-0 mt-3 sm:text-base text-sm sm:mb-5"
+        >
           <a
             href="
           /"
@@ -24,8 +27,9 @@
             </h2>
           </a>
         </div>
-        <form action="/login" method="post">
+        <form id="form" action="/login" method="post" class="">
           <div id="inputs" class="mt-10">
+            <p id="label">Login as Admin</p>
             <div id="username" class="flex flex-row rounded justify-between">
               <div id="img_h">
                 <img src="./../public/User100(2).png" alt="" />

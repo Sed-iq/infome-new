@@ -17,6 +17,8 @@ const Auth = {
                 res.redirect("/login");
               }
             });
+          } else {
+            res.redirect("/login");
           }
         })
         .catch((e) => {

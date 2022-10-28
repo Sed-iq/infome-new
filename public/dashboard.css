@@ -1,3 +1,7 @@
+body {
+  word-wrap: break-word;
+}
+
 @media (min-width: 640px) {
   #indicator {
     width: 100px;
@@ -17,9 +21,6 @@
     width: 100%;
     height: 50px;
   }
-  #all_posts {
-    display: none;
-  }
   #img_h {
     margin-top: 5px;
   }
@@ -29,4 +30,19 @@
   #create_post {
     width: 600px;
   }
+}
+#all_posts {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  img {
+    width: 30px;
+  }
+  #create_post {
+    width: 95%;
+  }
+}
+#post {
+  word-break: break-all;
 }/*# sourceMappingURL=dashboard.css.map */

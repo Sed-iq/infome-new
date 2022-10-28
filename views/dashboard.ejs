@@ -11,79 +11,52 @@
   <body>
     <%- include('./partials/header.ejs') -%>
     <div id="body" class="flex box-content flex-col">
-      <div class="flex flex-row justify-between">
-        <div
-          id="indicator"
-          class="m-12 p-2 font-bold text-center rounded text-sm text-white bg-slate-700"
-        >
-          All posts
-        </div>
-        <div class="">
-          <button
-            id="Init"
-            class="m-12 p-2 bg-green-600 text-white font-bold rounded"
-          >
-            Add a new Post
-          </button>
+      <div class="sm:flex sm:justify-center sm:my-4 my-10">
+        <div class="sm:w-7/12 flex flex-row justify-between sm:p-4 px-4">
+          <div class="">
+            <button
+              id="Init"
+              class="px-3 rounded py-2 bg-green-600 text-white text-sm"
+            >
+              View all posts
+            </button>
+          </div>
+          <div>
+            <button
+              onclick="logout()"
+              class="px-4 rounded py-2 bg-red-600 text-white text-sm"
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </div>
       <div id="dashboard" class="sm:self-center flex flex-col">
         <div id="all_posts" class="p-2">
-          <div id="post" class="border-2 border-gray-400 my-3 sm:p-4">
-            <span id="title">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Exercitationem, dicta.
-            </span>
-            <br />
-            <span id="snippet" class="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
-              reprehender
-            </span>
-            <br />
-            <span id="date" class="text-xs">22/2/1890</span>
+          <%data.forEach(post =>{ %>
+          <div
+            id="post"
+            class="border-2 p-3 flex sm:flex-row justify-between border-gray-400 my-3 sm:p-4"
+          >
+            <div>
+              <span id="title" class="sm:text-base text-sm">
+                <%= post._id %>
+              </span>
+              <br />
+              <span id="snippet" class="sm:text-sm text-xs">
+                <%= post.snippet %>
+              </span>
+              <br />
+              <span id="time" class="text-xs"><%=post.time %></span>
+            </div>
+            <div id="delete_btn" class="flex flex-col">
+              <div
+                id="delete_icon"
+                class="p-3 hover:cursor-pointer bg-red-600"
+              ></div>
+            </div>
           </div>
-
-          <div id="post" class="border-2 border-gray-400 my-3 sm:p-4">
-            <span id="title">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Exercitationem, dicta.
-            </span>
-            <br />
-            <span id="snippet" class="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
-              reprehender
-            </span>
-            <br />
-            <span id="date" class="text-xs">22/2/1890</span>
-          </div>
-
-          <div id="post" class="border-2 border-gray-400 my-3 sm:p-4">
-            <span id="title">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Exercitationem, dicta.
-            </span>
-            <br />
-            <span id="snippet" class="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
-              reprehender
-            </span>
-            <br />
-            <span id="date" class="text-xs">22/2/1890</span>
-          </div>
-
-          <div id="post" class="border-2 border-gray-400 my-3 sm:p-4">
-            <span id="title">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Exercitationem, dicta.
-            </span>
-            <br />
-            <span id="snippet" class="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
-              reprehender
-            </span>
-            <br />
-            <span id="date" class="text-xs">22/2/1890</span>
-          </div>
+          <%})%>
         </div>
         <div
           id="create_post"
@@ -188,4 +161,11 @@
   </body>
   <script src="./../public/jquery.js"></script>
   <script src="./../public/dashboard.js"></script>
+  <script>
+    let time = document.querySelectorAll("#time");
+    time.forEach((item) => {
+      let d = new Date(item.innerText).toLocaleDateString();
+      item.innerText = d;
+    });
+  </script>
 </html>

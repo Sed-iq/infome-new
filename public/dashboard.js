@@ -41,4 +41,38 @@ function image_reader(file, element) {
   });
 }
 
-// Post handler
+// Delete handler
+let post_list = document.querySelectorAll("#post");
+post_list.forEach((post) => {
+  post.children.delete_btn.children[0].addEventListener("click", () => {
+    let _id = post.children[0].children.title.innerText;
+    fetch(`/post/${_id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          post.remove(post);
+        } else {
+          location = "/admin";
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    post.remove(post);
+  });
+});
+// logout
+function logout() {
+  fetch("/logout", { method: "DELETE" })
+    .then((res) => {
+      if (res.status == 200) {
+        location = "/";
+      } else {
+        location = "/admin";
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}

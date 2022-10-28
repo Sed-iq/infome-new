@@ -1,3 +1,6 @@
+body {
+  word-wrap: break-word;
+}
 img {
   pointer-events: none;
 }
@@ -19,6 +22,12 @@ img {
     }
   }
 }
+@media (max-width: 640px) {
+  #image_holder img {
+    max-width: 90%;
+  }
+}
+
 #post_comment,
 #comments_holder {
   display: none;

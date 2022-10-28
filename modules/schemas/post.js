@@ -24,6 +24,9 @@ const pObj = {
     type: Date,
     required: true,
   },
+  comment:{
+    type: Array
+  }
 };
 const schema = mongoose.Schema(pObj);
 module.exports = mongoose.model("post", schema);

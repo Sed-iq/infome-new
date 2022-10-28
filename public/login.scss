@@ -1,5 +1,8 @@
-// PC
+img {
+  width: 30px;
+}
 
+// PC
 @media (min-width: 640px) {
   #body {
     height: 100vh;
@@ -8,7 +11,9 @@
     justify-content: center;
     align-items: center;
   }
-
+  #label {
+    display: none;
+  }
   #login_body {
     padding: 1.5em;
     width: 400px;
@@ -53,5 +58,34 @@
         width: 35px;
       }
     }
+  }
+}
+// phone
+@media (max-width: 640px) {
+  body {
+    color: white;
+    background: rgb(133, 133, 133);
+  }
+  #form {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #inputs {
+      width: 80%;
+      margin-top: 10em;
+      padding: 0.8em;
+    }
+  }
+  #img_h {
+    padding-top: 0.4em;
+  }
+  #label {
+    margin: 1em;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
   }
 }

@@ -4,7 +4,7 @@ const router = require("./modules/routes");
 const mongoose = require("mongoose");
 app.use(router);
 // Mongodb connection
-const uri = "mongodb://192.168.43.1/blog";
+const uri = "mongodb://127.0.0.1/blog";
 mongoose
   .connect(uri)
   .then((data) => {

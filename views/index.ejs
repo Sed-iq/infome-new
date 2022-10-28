@@ -11,24 +11,34 @@
   <body>
     <%- include('./partials/header.ejs') -%>
     <div id="body" class="flex flex-col">
-      <div id="top_news" class="border-2 self-center w-full sm:w-5/6 mt-10">
+      <div id="top_news" class="sm:border-2 self-center w-full sm:w-5/6 mt-10">
         <div id="first">
           <% left.forEach(item=>{ %>
-          <div id="one" class="">
-            <div id="below" class="sm:px-0 px-8" class="">
-              <h2><%= item.snippet%></h2>
-              <small id="time"><%= item.time%> </small>
-            </div>
+          <div
+            id="one"
+            class="sm:my-0 sm:mx-0 mx-4 bg-amber-200 sm:bg-none my-3"
+          >
+            <a href="/post/<%=item._id%>">
+              <div id="below" class="sm:px-0 sm:py-0 py-5 px-8" class="">
+                <h2 id="text"><%= item.snippet%></h2>
+                <small id="time"><%= item.time%> </small>
+              </div>
+            </a>
           </div>
           <%}) %>
         </div>
         <!-- #second will only show on the pc version on mobile it's all good ps delete during production -->
         <div id="second">
           <% right.forEach(item =>{ %>
-          <div id="below" class="sm:px-0 px-8">
-            <h2><%= item.snippet %></h2>
-            <small id="time"><%= item.time%></small>
-          </div>
+          <a href="/post/<%=item._id%>">
+            <div
+              id="below"
+              class="sm:px-0 sm:py-0 sm:mx-0 mx-4 py-5 sm:bg-none bg-emerald-500 px-8"
+            >
+              <h2 id="text"><%= item.snippet %></h2>
+              <small id="time"><%= item.time%></small>
+            </div>
+          </a>
           <% }) %>
         </div>
       </div>
@@ -37,63 +47,39 @@
       </div>
       <div
         id="other_news"
-        class="border-2 text-white text-xs self-center justify-between sm:justify-between flex flex-col sm:flex-row w-11/12 sm:w-5/6 sm:mt-10"
+        class="flex flex-col sm:my-0 my-4 sm:px-4 px-4 sm:flex-row sm:justify-center"
       >
-        <!-- Only holds three elements -->
-        <% second.forEach(item =>{ %>
-        <div id="one" class="flex flex-col justify-end">
-          <div id="below" class="">
-            <h2><%= item.snippet%></h2>
-            <small id="time"><%=item.time%></small>
-          </div>
+        <% second.forEach(item =>{%>
+        <div
+          class="item sm:rounded-none sm:my-0 my-3 rounded bg-slate-700 sm:flex sm:flex-col sm:justify-end p-4"
+        >
+          <a
+            href="/post/<%=item._id%>"
+            id="below"
+            class="flex sm:rounded text-white text-xs flex-col sm:p-2 justify-between"
+          >
+            <p id="text" class="sm:pb-2"><%= item.snippet%></p>
+            <p id="time"><%=item.time%></p>
+          </a>
         </div>
         <% })%>
+        <!-- Only holds three elements -->
       </div>
-      <!-- <div id="last_section" class="my-8 sm:flex sm:flex-row sm:justify-center">
-        <div id="last_holder" class="w-full rounded border-2 p-3 px-10">
-          <div id="cover">
-            <h2 id="title_section" class="text-sm">
-              Lorem ipsum dolor sit, Lorem ipsum dolor sit amet.
-            </h2>
-            <h2 id="snippet_section" class="text-sm pl-10 font-bold">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis,
-              excepturi. Magni saepe incidunt officia veritatis tempore
-              perspiciatis quibusdam repellendus praesentium cupiditate! Vel,
-              culpa animi illo quos rem amet in quidem!
-            </h2>
-          </div>
+      <% data.forEach(item =>{%>
+      <a
+        href="/post/<%=item._id%>"
+        id="last_section"
+        class="sm:flex p-5 sm:justify-center sm:px-0 px-4"
+      >
+        <div
+          id="holder"
+          class="p-4 sm:w-4/6 text-white w-full rounded bg-slate-400"
+        >
+          <p id="text" class="text-sm"><%=item.snippet%></p>
+          <p id="time" class="text-xs pt-5"><%=item.time%></p>
         </div>
-      </div>
-
-      <div id="last_section" class="my-8 sm:flex sm:flex-row sm:justify-center">
-        <div id="last_holder" class="w-full rounded border-2 p-3 px-10">
-          <div id="cover">
-            <h2 id="title_section" class="text-sm">
-              Lorem ipsum dolor sit, Lorem ipsum dolor sit amet.
-            </h2>
-            <h2 id="snippet_section" class="text-sm pl-10 font-bold">
-              Lorem ipos rem amet in quidem!
-            </h2>
-          </div>
-        </div>
-      </div>
-
-      <div id="last_section" class="my-8 sm:flex sm:flex-row sm:justify-center">
-        <div id="last_holder" class="w-full rounded border-2 p-3 px-10">
-          <div id="cover">
-            <h2 id="title_section" class="text-sm">
-              Lorem ipsum dolor sit, Lorem ipsum dolor sit amet.
-            </h2>
-            <h2 id="snippet_section" class="text-sm pl-10 font-bold">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis,
-              excepturi. Magni saepe incidunt officia veritatis tempore
-              perspiciatis quibusdam repellendus praesentium cupiditate! Vel,
-              culpa animi illo quos rem amet in quidem!
-            </h2>
-          </div>
-        </div>
-      </div> -->
-      <%- include('./partials/footer.ejs') -%>
+      </a>
+      <%})%> <%- include('./partials/footer.ejs') -%>
     </div>
   </body>
   <script>
@@ -104,6 +90,18 @@
         item.innerText = `${newText} ...`;
       }
     });
+    // minify more
+    text_minify = document.querySelectorAll("#text");
+    text_minify.forEach((item) => {
+      if (item.innerText.length >= 100) {
+        let newText = item.innerText.substring(0, 100);
+        item.innerText = `${newText} ...`;
+        console.log(item.textContent);
+      } else {
+        console.log("hey");
+      }
+    });
+
     // Time format
     let time = document.querySelectorAll("#time");
     time.forEach((item) => {

@@ -11,54 +11,37 @@
   <body>
     <!-- Heading (Replace with an ejs partial during merging) -->
     <%- include('./partials/header.ejs') -%>
-    <div id="body" class="sm:mt-14 sm:flex sm:flex-col sm:items-center">
-      <div id="title" class="font-bold flex flex-row justify-center sm:text-xl">
-        <h2>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam volu
-        </h2>
+    <div id="body" class="sm:mt-14 sm:flex sm:flex-col  sm:items-center">
+      <div id="title" class="font-bold text-sm sm:mt-0 mt-10 flex flex-row justify-center sm:text-xl">
+        <h2><%= data.title%></h2>
       </div>
-      <div id="snippet" class="sm:text-sm flex flex-row justify-center">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-          aliquid inventore ipsa eius est reiciendis laboriosam porro
-          dignissimos! Quod dolores amet fugit possimus obcaecati iste eveniet
-          iure consequuntur ducimus eaque.
-        </p>
-      </div>
-      <div id="info" class="sm:text-xs pt-6 flex flex-row justify-around">
+      <div id="info" class="text-xs pt-6 flex flex-row justify-center">
         <p class="">Written by Abdullahi Sediq |&nbsp;</p>
-        <p>2/2/1832</p>
+        <p id="time"><%= data.time%></p>
+      </div>
+      <div id="snippet" class="sm:text-sm  text-xs flex flex-row justify-center">
+        <p><%= data.snippet%></p>
       </div>
       <!-- Image -->
       <div id="image_holder" class="flex flex-row justify-center my-8">
         <img src="./../public/tst.png" alt="" class="sm:max-w-4xl max-w-lg" />
       </div>
-      <div id="main" class="px-4 sm:max-w-6xl my-10">
-        <h2>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
-          quos molesautem praesentium sequi esse ex error laborum? Hic unde
-          animi repellat consequatur mollitia commodi reprehenderit tempore
-          ipsam incidunt veritatis, rerum fugiat earum aut dolorum iusto a
-          temporibus quisquam aperiam dolore explicabo adipisci. Repellat
-          tenetur commodi earum aperiam sapiente quos sed, rerum modi recusandae
-          impedit nostrum quia dolorum. Itaque beatae consectete amet odit
-          voluptatibus repellendus explicabo provident est molestiae maiores?
-          Ipsam ipsum debitis quidem fugiat, eum reiciendis ab rerum incidunt
-          accusamus explicabo, maiores libero voluptates. Consequatur!
-        </h2>
+      <div id="main" class="px-4 sm:text-base text-sm sm:max-w-6xl my-10">
+        <h2><%= data.body%></h2>
       </div>
       <!-- comment section -->
-      <div id="comments" class="sm:my-10 mb-5">
+      <div id="comments" class="sm:my-10  sm:block flex justify-center mb-5">
         <div id="btn_holder">
           <button
             id="show_comm_btn"
-            class="px-4 py-2 rounded bg-blue-700 text-white"
+            class="sm:px-4 sm:py-2 py-2 px-3 text-sm sm:text-base rounded bg-blue-700 text-white"
+
           >
             Show comments
           </button>
           <button
             id="post_comm_btn"
-            class="px-4 py-2 rounded bg-black text-white"
+            class="sm:px-4 sm:py-2 py-2 px-3 text-sm sm:text-base rounded bg-black text-white"
           >
             Post a comment
           </button>
@@ -66,41 +49,58 @@
       </div>
 
       <!-- Shows comment inputs -->
-      <div id="post_comment" class="flex flex-col sm:w-2/5 mb-7">
-        <div>
-          <input
+      <div id="post_comment" class="flex flex-col sm:w-2/5 sm:px-0 px-8 mb-7">
+        <form action="/comment/<%= data._id%>" method="post">
+
+          <div>
+            <input
             type="text"
+            id="inp"
+            name="name"
             placeholder="Your name (optional)"
             class="w-full text-sm px-2 outline-none focus:border-slate-900 py-2 border-2 rounded-sm border-gray-500"
-          />
-        </div>
-        <div>
-          <textarea
+            />
+          </div>
+          <div>
+            <textarea
             style="resize: none"
             type="text"
+            required
+            id="inp"
+            minlength="20"
+            maxlength="900000"
+            name="comment"
             placeholder="Your comment"
             class="w-full text-sm px-2 mt-5 outline-none focus:border-slate-900 py-3 border-2 rounded-sm border-gray-500"
-          ></textarea>
-        </div>
-        <div class="flex mt-4 flex-row justify-center">
-          <button id="post" class="p-3 px-7 rounded text-white bg-blue-500">
-            Post
-          </button>
-        </div>
+            ></textarea>
+          </div>
+          <div class="flex mt-4 flex-row justify-center">
+            <button id="post" class="p-3 px-7 rounded text-white bg-blue-500">
+              Post
+            </button>
+          </form>
+          </div>
       </div>
       <!-- Shows other people's comments -->
       <div id="comments_holder" class="sm:w-2/5 my-7">
-        <p class="px-8 pb-4">Comments</p>
-        <div id="comments" class="border-2 rounded border-gray-400 px-3">
-          <div id="hold">
-            <p id="name" class="py-4 italic">Sediq</p>
+        <p class="px-8 sm:text-base text-sm pb-4">Comments</p>
+        <div id="comments" class="border-2 rounded sm:mx-0 mx-8 border-gray-400 px-3">
+
+          <%data.comment.forEach(item => {%>
+        <div id="hold" class="my-3">
+            <p id="name" class="py-4 text-sm italic"><%=item.name%></p>
             <div class="flex flex-row justify-between">
-              <p id="comment" class="pl-7 text-sm">
-                This has been enlightening
+              <p id="comment" class="px-5 text-sm">
+                <%=item.comment%>
               </p>
-              <p id="date" class="text-gray-600 text-xs">20/2/1991</p>
+              <p id="time" class="text-gray-600 text-xs"><%= item.time%></p>
             </div>
           </div>
+          <%})%>
+
+  
+
+        
         </div>
       </div>
 
@@ -133,5 +133,20 @@
         $(post_comment_show).slideToggle(200);
       }
     });
+  </script>
+  <script>
+    // Time format
+    console.log("hey");
+    let time = document.querySelectorAll("#time");
+    time.forEach((item) => {
+      let d = new Date(item.innerText).toLocaleDateString();
+      item.innerText = d;
+    });
+
+    // Clearing input tags
+    let inp = document.querySelectorAll(`#inp`)
+    inp.forEach(input =>{
+      input.value =''
+    })
   </script>
 </html>

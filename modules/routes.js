@@ -18,9 +18,7 @@ router.get("/login", auth.isLogin, (req, res) => {
   res.render("login");
 });
 router.get("/post/:id", Controller.showPost); // Getting one post
-router.get("/admin", auth.isLogin, (req, res) => {
-  res.render("dashboard");
-});
+router.get("/admin", auth.isLogin, Controller.dashboard);
 // Post requests
 router.post("/login", auth.login);
 router.post(
@@ -29,6 +27,8 @@ router.post(
   Controller.imageUpload.single("image"),
   Controller.post
 );
+router.post("/comment/:id", Controller.comment_upload);
 // Delete requests
 router.delete("/post/:id", Controller.deletePost);
+router.delete("/logout", Controller.logout);
 module.exports = router;
