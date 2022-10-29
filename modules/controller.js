@@ -1,17 +1,14 @@
 const postSchema = require("./schemas/post"),
-  multer = require("multer"),
-  path = require("path");
+  cloudinary = require("cloudinary"),
+  multer = require("multer");
 const Controller = {
   imageUpload: multer({
-    storage: multer.diskStorage({
-      destination: (res, file, cb) => {
-        cb(null, path.join(__dirname + "/uploads"));
-      },
-      filename: (res, file, cb) => {
-        cb(null, file.originalname);
-      },
-    }),
+    storage: multer.memoryStorage(),
+    limits: {
+      fieldSize: 5 * 1024 * 1024, // 5 mb max file upload
+    },
   }),
+  cloudUpload: {},
   homepage: (req, res) => {
     postSchema
       .find()
@@ -31,25 +28,34 @@ const Controller = {
       .catch((e) => console.log(e));
   },
   post: (req, res) => {
-    let { title, snippet, keywords, body } = req.body;
-    let image = req.file.filename;
-    let newPost = new postSchema({
-      title,
-      snippet,
-      image,
-      keywords,
-      body,
-      time: new Date(),
-    });
-    newPost
-      .save()
-      .then((d) => {
-        res.redirect("/admin");
-      })
-      .catch((e) => {
-        console.error(e);
-        res.redirect("/admin");
-      });
+    if (req.file) {
+      let cld_upload = cloudinary.uploader.upload_stream(
+        {
+          folder: "/techinf/uploads",
+        },
+        (err, { secure_url }) => {
+          if (err) {
+            res.redirect("/admin");
+          } else {
+            let { title, snippet, keywords, body } = req.body;
+            let image = secure_url;
+            let newPost = new postSchema({
+              title,
+              snippet,
+              image,
+              keywords,
+              body,
+              time: new Date(),
+            });
+            newPost.save().then((d) => {
+              res.redirect("/admin");
+            });
+          }
+        }
+      );
+    } else {
+      res.redirect("/admin");
+    }
   },
   showPost: (req, res) => {
     let { id } = req.params;

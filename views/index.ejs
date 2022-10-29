@@ -16,6 +16,7 @@
           <% left.forEach(item=>{ %>
           <div
             id="one"
+            style="background: url(<%= item.image%>)"
             class="sm:my-0 sm:mx-0 mx-4 bg-amber-200 sm:bg-none my-3"
           >
             <a href="/post/<%=item._id%>">
@@ -27,12 +28,12 @@
           </div>
           <%}) %>
         </div>
-        <!-- #second will only show on the pc version on mobile it's all good ps delete during production -->
         <div id="second">
           <% right.forEach(item =>{ %>
           <a href="/post/<%=item._id%>">
             <div
               id="below"
+              style="background: url(<%= item.image%>)"
               class="sm:px-0 sm:py-0 sm:mx-0 mx-4 py-5 sm:bg-none bg-emerald-500 px-8"
             >
               <h2 id="text"><%= item.snippet %></h2>
@@ -51,7 +52,8 @@
       >
         <% second.forEach(item =>{%>
         <div
-          class="item sm:rounded-none sm:my-0 my-3 rounded bg-slate-700 sm:flex sm:flex-col sm:justify-end p-4"
+          style="background: url(<%= item.image%>)"
+          class="item sm:rounded-none sm:my-0 my-3 rounded sm:flex sm:flex-col sm:justify-end p-4"
         >
           <a
             href="/post/<%=item._id%>"
@@ -73,7 +75,8 @@
       >
         <div
           id="holder"
-          class="p-4 sm:w-4/6 text-white w-full rounded bg-slate-400"
+          style="background: url(<%= item.image%>)"
+          class="p-4 sm:w-4/6 text-white w-full rounded"
         >
           <p id="text" class="text-sm"><%=item.snippet%></p>
           <p id="time" class="text-xs pt-5"><%=item.time%></p>
