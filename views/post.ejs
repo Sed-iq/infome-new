@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="<%= data.keywords%>">
+    <meta name="description" content="<%= data.snippet%>">
     <title>Techinf || A post</title>
     <link rel="stylesheet" href="./../public/post.css" />
     <link rel="stylesheet" href="./../public/post_design.css" />
@@ -24,7 +26,7 @@
       </div>
       <!-- Image -->
       <div id="image_holder" class="flex flex-row justify-center my-8">
-        <img src="./../public/tst.png" alt="" class="sm:max-w-4xl max-w-lg" />
+        <img src="<%=data.image%>" alt="" class="sm:max-w-4xl max-w-lg" />
       </div>
       <div id="main" class="px-4 sm:text-base text-sm sm:max-w-6xl my-10">
         <h2><%= data.body%></h2>

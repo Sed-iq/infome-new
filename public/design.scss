@@ -16,10 +16,10 @@ body {
     width: 40%;
     display: flex;
     flex-direction: column;
-    #one,
-    #two {
+    #one {
       height: 100%;
       display: flex;
+      background-repeat: no-repeat;
       flex-direction: column;
       justify-content: flex-end;
     }
@@ -34,6 +34,7 @@ body {
       bottom: 0;
       width: 100%;
       color: white;
+
       font-size: 13px;
     }
   }
@@ -73,8 +74,22 @@ body {
 }
 // Phone
 @media (max-width: 640px) {
+  #one {
+    background-position: center;
+    #below {
+      background-color: rgba(0, 0, 0, 0.698);
+    }
+  }
+  #second #below {
+    #cover {
+      color: white;
+      padding: 0.8em;
+      background: rgba(0, 0, 0, 0.677);
+    }
+  }
   #other_news {
     color: white;
+
     .item {
       min-height: 100px;
     }

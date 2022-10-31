@@ -1,6 +1,12 @@
 const postSchema = require("./schemas/post"),
-  cloudinary = require("cloudinary"),
+  cloudinary = require("cloudinary").v2,
   multer = require("multer");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 const Controller = {
   imageUpload: multer({
     storage: multer.memoryStorage(),
@@ -8,7 +14,6 @@ const Controller = {
       fieldSize: 5 * 1024 * 1024, // 5 mb max file upload
     },
   }),
-  cloudUpload: {},
   homepage: (req, res) => {
     postSchema
       .find()
@@ -27,32 +32,35 @@ const Controller = {
       })
       .catch((e) => console.log(e));
   },
-  post: (req, res) => {
+  post: async (req, res) => {
     if (req.file) {
-      let cld_upload = cloudinary.uploader.upload_stream(
-        {
-          folder: "/techinf/uploads",
-        },
-        (err, { secure_url }) => {
-          if (err) {
-            res.redirect("/admin");
-          } else {
-            let { title, snippet, keywords, body } = req.body;
-            let image = secure_url;
-            let newPost = new postSchema({
-              title,
-              snippet,
-              image,
-              keywords,
-              body,
-              time: new Date(),
-            });
-            newPost.save().then((d) => {
+      console.log(req.file);
+      let cld_upload = await cloudinary.uploader
+        .upload_stream(
+          {
+            folder: "/techinf/uploads",
+          },
+          (err, { secure_url }) => {
+            if (err) {
               res.redirect("/admin");
-            });
+            } else {
+              let { title, snippet, keywords, body } = req.body;
+              let image = secure_url;
+              let newPost = new postSchema({
+                title,
+                snippet,
+                image,
+                keywords,
+                body,
+                time: new Date(),
+              });
+              newPost.save().then((d) => {
+                res.redirect("/admin");
+              });
+            }
           }
-        }
-      );
+        )
+        .end(req.file.buffer);
     } else {
       res.redirect("/admin");
     }

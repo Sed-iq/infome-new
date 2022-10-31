@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express();
 // const dotenv = require("dot-env").config();
-const cloudinary = require("cloudinary");
+
 const session = require("express-session");
 const Controller = require("./controller");
 const auth = require("./auth");
@@ -12,11 +12,7 @@ router.use(
     resave: false,
   })
 );
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET,
-});
+
 router.use("/public", express.static("public"));
 router.use(express.urlencoded({ extended: true }));
 router.set("view engine", "ejs");
@@ -38,4 +34,7 @@ router.post("/comment/:id", Controller.comment_upload);
 // Delete requests
 router.delete("/post/:id", auth.isLogin, Controller.deletePost);
 router.delete("/logout", auth.isLogin, Controller.logout);
+router.use(({}, res) => {
+  res.render("404.ejs");
+});
 module.exports = router;

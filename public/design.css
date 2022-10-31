@@ -15,10 +15,10 @@ body {
     display: flex;
     flex-direction: column;
   }
-  #first #one,
-#first #two {
+  #first #one {
     height: 100%;
     display: flex;
+    background-repeat: no-repeat;
     flex-direction: column;
     justify-content: flex-end;
   }
@@ -69,6 +69,17 @@ body {
 }
 
 @media (max-width: 640px) {
+  #one {
+    background-position: center;
+  }
+  #one #below {
+    background-color: rgba(0, 0, 0, 0.698);
+  }
+  #second #below #cover {
+    color: white;
+    padding: 0.8em;
+    background: rgba(0, 0, 0, 0.677);
+  }
   #other_news {
     color: white;
   }

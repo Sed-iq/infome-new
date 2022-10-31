@@ -17,7 +17,7 @@
           <div
             id="one"
             style="background: url(<%= item.image%>)"
-            class="sm:my-0 sm:mx-0 mx-4 bg-amber-200 sm:bg-none my-3"
+            class="sm:my-0 sm:text-black text-white sm:mx-0 mx-4 bg-amber-200 sm:bg-none my-3"
           >
             <a href="/post/<%=item._id%>">
               <div id="below" class="sm:px-0 sm:py-0 py-5 px-8" class="">
@@ -36,8 +36,10 @@
               style="background: url(<%= item.image%>)"
               class="sm:px-0 sm:py-0 sm:mx-0 mx-4 py-5 sm:bg-none bg-emerald-500 px-8"
             >
-              <h2 id="text"><%= item.snippet %></h2>
-              <small id="time"><%= item.time%></small>
+              <div id="cover">
+                <h2 id="text"><%= item.snippet %></h2>
+                <small id="time"><%= item.time%></small>
+              </div>
             </div>
           </a>
           <% }) %>
