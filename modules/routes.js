@@ -1,7 +1,5 @@
 const express = require("express");
 const router = express();
-// const dotenv = require("dot-env").config();
-
 const session = require("express-session");
 const Controller = require("./controller");
 const auth = require("./auth");
@@ -34,7 +32,7 @@ router.post("/comment/:id", Controller.comment_upload);
 // Delete requests
 router.delete("/post/:id", auth.isLogin, Controller.deletePost);
 router.delete("/logout", auth.isLogin, Controller.logout);
-router.use(({}, res) => {
-  res.render("404.ejs");
+router.use((req, res) => {
+  res.render("404");
 });
 module.exports = router;
