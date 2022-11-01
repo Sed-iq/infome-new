@@ -2,10 +2,10 @@
   "name": "techinf",
   "version": "1.0.0",
   "description": "A tech blog",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon app",
-    "start": "node index"
+    "start": "node app.js"
   },
   "engines": {
     "node": ">=16.0.0"
