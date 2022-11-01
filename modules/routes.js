@@ -12,7 +12,6 @@ router.use(
   })
 );
 
-router.use("/public", express.static("public"));
 router.use(express.urlencoded({ extended: true }));
 router.get("/", Controller.homepage);
 router.get("/login", auth.isLogin, (req, res) => {
