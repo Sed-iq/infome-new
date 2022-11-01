@@ -3,7 +3,6 @@ const app = express();
 const dotenv = require("dotenv").config();
 const router = require("./modules/routes");
 const mongoose = require("mongoose");
-app.use(router);
 // Mongodb connection
 const uri = process.env.URI;
 mongoose
@@ -15,3 +14,6 @@ mongoose
     app.listen(process.env.PORT, console.log("Error connecting to database"));
     console.log(err);
   });
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
