@@ -14,6 +14,4 @@ mongoose
     app.listen(process.env.PORT, console.log("Error connecting to database"));
     console.log(err);
   });
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+app.use(router);
