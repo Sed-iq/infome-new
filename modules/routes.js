@@ -1,0 +1,12 @@
+const express = require("express");
+const app = express();
+const Auth = require("./auth");
+const Post = require("./contollers/post");
+const home = require("./contollers/homepage");
+app.use(express.urlencoded({ extended: true }));
+app.get("/", home);
+app.post("/sub", Post.Subscription);
+app.use(Auth.verify);
+app.post("/login", Auth.login);
+app.post("/post", Post.Post);
+module.exports = app;

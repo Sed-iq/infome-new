@@ -2,7 +2,8 @@ const express = require("express");
 const mogoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const app = express();
-
+const routes = require("./modules/routes");
+app.use("/api", routes);
 mogoose.connect(process.env.URI, (err) => {
   if (err) {
     console.log(err);
