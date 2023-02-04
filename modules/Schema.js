@@ -22,7 +22,7 @@ const _ = {
           type: String,
           require: true,
         },
-        snippet: {
+        category: {
           type: String,
           require: true,
         },
